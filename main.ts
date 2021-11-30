@@ -1,3 +1,9 @@
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorLockedNorth, function (sprite, location) {
+    game.over(true)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    tiles.setTilemap(tilemap`level5`)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
         e e e . . . . e e e . . . . 
@@ -34,12 +40,20 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f f . . f f . . f f . 
         `)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.over(false)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles8, function (sprite, location) {
     tiles.setTilemap(tilemap`level2`)
     tiles.placeOnRandomTile(mySprite, sprites.dungeon.darkGroundEast)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
+    tiles.setTilemap(tilemap`level4`)
+    tiles.placeOnRandomTile(mySprite, sprites.swamp.swampTile16)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, function (sprite, location) {
     tiles.setTilemap(tilemap`level3`)
+    tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight1)
 })
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
